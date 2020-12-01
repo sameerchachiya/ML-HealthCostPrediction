@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <head>
+		<title>Health cost pred</title>
+		<meta charset = "UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	</head>
+
+
+</head>
+
+<body>
+ <div class="container">
+	<h1>Health insurance cost prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('y_predict')}}"method="post">
+
+      <input type="text" name="age" placeholder="age" required="required" />
+	<select name="sex" required="required" class="form-control" >
+		  <option value="">select sex</option>
+		  <option value=0>Female</option>
+		  <option value=1>Male</option> 
+		</select>
+    	<input type="text" name="bmi" placeholder="bmi" required="required" />
+        <input type="text" name="Children" placeholder="Children" required="required" />
+        <select name="Smoker" required="required" class="form-control">
+          <option value="">select smoker</option>
+          <option value=0>Non smoker</option>
+          <option value=1>Smoker</option>
+        </select>
+        <select name="region" required="required" class="form-control" >
+          <option value="">select region</option>
+          <option value=0>southeast</option>
+          <option value=1>southwest</option>
+          <option value=2>northwest</option>
+          <option value=3>northeast</option>
+      </select>
+     <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    
+    </form>
+   <h><strong>the predicted value is</strong></h>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
+
